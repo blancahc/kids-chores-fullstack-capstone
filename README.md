@@ -1,1 +1,1 @@
-# kids-chores-fullstack-capstone
+# recipe-book-fullstack-capstone
