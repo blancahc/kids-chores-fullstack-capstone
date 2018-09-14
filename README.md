@@ -6,33 +6,33 @@ Live Pre-view available at ?....................?
 This is a simple app where someone can search for, create his/her own recipes and save them like in a recipe book.
 
 # Screenshots
-![Landing Page](https://github.com/blancahc/budgeting-app-node-capstone/blob/master/git-hub-images/landing-page-ss.png)
-![Sign-up page](https://github.com/blancahc/budgeting-app-node-capstone/blob/master/git-hub-images/sign-up-page-ss.png)
-![Add Transaction](https://github.com/blancahc/budgeting-app-node-capstone/blob/master/git-hub-images/add-transaction-ss.png)
-![Add Category](https://github.com/blancahc/budgeting-app-node-capstone/blob/master/git-hub-images/add-category-ss.png)
-![Add Subcategory](https://github.com/blancahc/budgeting-app-node-capstone/blob/master/git-hub-images/add-subcategory-ss.png)
-![View Budget & Transactions](https://github.com/blancahc/budgeting-app-node-capstone/blob/master/git-hub-images/view-budget-transactions-ss.png)
+![Landing Page](image link)
+![Sign-up page]()
+![Dashboard]()
+![Add Recipe]()
+![Search for Recipes]()
+![Detailed Recipe View]()
 # User Stories & Initial UX
 ![UI Flow](git-hub-images/ui-flow.jpg)
 **Landing Page**
 
-1. As a visitor, I want to land on the main page and understand what this website is about in order for me to use it.
-![Landing Page](git-hub-images/landing-page.jpg)
+1. As a visitor, I want to land on the main page and understand what this website is about in order for me to use it. As a registered user, I should be able to easily sign in.
+![Landing Page](https://github.com/blancahc/recipe-book-fullstack-capstone/blob/master/git-hub-images/landing.PNG)
 
 2. As a visitor, I want to be able to easily sign-up to be able to use the application. In any page, I should be able to sign out.
-![Sign-Up Page](git-hub-images/signup-page.jpg)
+![Sign-Up Page](https://github.com/blancahc/recipe-book-fullstack-capstone/blob/master/git-hub-images/signup.PNG)
 
-3. As a user, I want to be able to land on the dasboard, and be able to add a transaction.
-![Dashboard Page](git-hub-images/transactions-page.jpg)
+3. As a user, I want to be able to land on the dasboard, and be able see thumbnails of my recipes.
+![Dashboard Page](https://github.com/blancahc/recipe-book-fullstack-capstone/blob/master/git-hub-images/user-dashboard.PNG)
 
-4. As a user, I want to easily create new budget categories.
-![Budget Page](git-hub-images/add-category.jpg)
+4. As a user, I want to easily add my recipes.
+![Add Recipe](https://github.com/blancahc/recipe-book-fullstack-capstone/blob/master/git-hub-images/add-recipe.PNG)
 
-5. As a user, I want to create new subcategories and assign a monthly budget for each.
-![Transactions Page](git-hub-images/add-subcategory.jpg)
+5. As a user, I want to be able to search for recipes in the web to copy and paste from into my app.
+![Search for recipes](https://github.com/blancahc/recipe-book-fullstack-capstone/blob/master/git-hub-images/search-recipe.PNG)
 
-6. As a user, I want to see a summary of my budgeted expenses/incomes by subcategory and also a history of my transactions with totals.
-![Chart Page](git-hub-images/budget-page.jpg)
+6. As a user, I want to get a detailed view of my saved receipes when I click on a thumbnail.
+![Detailed Recipe View](https://github.com/blancahc/recipe-book-fullstack-capstone/blob/master/git-hub-images/Detailed-view.PNG)
 
 # Technical stack
 
@@ -60,9 +60,7 @@ This is a simple app where someone can search for, create his/her own recipes an
  * Bcrypt
 
 ### Version 1.1
- *Add option on the top to view budget by month
- *Users will be able to view their total expenses and income by month
- *Allow option for users to edit subcategory budgeted amounts directly
+ *
 
 #  The typical command lines for capstone projects
 
