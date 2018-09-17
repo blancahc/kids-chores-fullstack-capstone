@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Savour-Saved Recipe Book</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <input type="hidden" id="loggedInUserName" value="">
+    <!-- *****************************************Landing Page************************************************************       -->
+    <main role="main" id="js-landing-page" aria-live="assertive">
+        <img id="mainImg" src="images/logo.PNG" alt="savour saved logo image">
+        <div class="textBox">
+            <h1>Create your virtual recipe book with <span class="appName">SavourSaved!</span>
+            </h1>
+            <br>
+            <div id="appFeatures">
+                <ul>
+                    <li>~ Search for recipes ~
+                    </li>
+                    <li>~ Save your favorite recipes ~
+                    </li>
+                </ul>
+            </div>
+
+            <form class="sign-in-up-form" id="js-sign-in-form">
+                <legend>Sign In</legend>
+                <fieldset>
+                    <label for="loginUsername">Username</label>
+                    <input type="name" id="loginUsername" placeholder="admin" value="admin">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="admin123" value="admin123">
+                    <p class="demoInfo">For a demo use username: <i>admin</i>, password: <i>admin123</i></p>
+                </fieldset>
+                <button type="submit" class="submit-button" id="login-button">Sign In</button>
+                <br>
+                <p>Need to <button class="signInUpLink" id="js-sign-up-link">Sign-up</button>?</p>
+            </form>
+        </div>
+    </main>
+
+    <!-- *****************************************Sign Up Page************************************************************       -->
+    <main role="main" id="js-sign-up-page" aria-live="assertive">
+        <form class="sign-in-up-form" id="js-sign-up-form">
+            <legend>Sign up</legend>
+            <fieldset>
+                <label for="signUpName">Name</label>
+                <input type="name" id="signUpName" placeholder="John Doe" value="John Doe">
+                <label for="signUpUsername">Username</label>
+                <input type="name" id="signUpUsername" placeholder="john2" value="john2">
+                <label for="signUpPassword">Password</label>
+                <input type="password" id="signUpPassword" placeholder="treicky62" value="treicky62">
+            </fieldset>
+            <button type="submit" class="submit-button">Sign Up</button>
+            <br>
+            <p>Have an account? <button class="singInUpLink" id="js-back-to-login">Sign In</button></p>
+        </form>
+    </main>
+    <!-- *****************************************Navigation when Logged In************************************************************ -->
+    <main role="main" id="js-navigation" aria-live="assertive">
+        <nav class="navbar">
+            <span class="nav-options">
+                    <ul>
+                        <li><img id="logoImg" src="images/logo.PNG" alt="savour recipe logo image"></li>
+                        <li><a href="#" id="js-nav-budget">My Recipes</a></li>
+                        <li><a href="#" id="js-nav-add-budget">Search for Recipe</a></li>
+                        <li><a href="#" id="js-nav-add-budget">Add a Recipe</a></li>
+                        <li><button id="js-signout-button" class="signout-button" type="button"> Sign Out</button></li>
+                    </ul>
+                </span>
+        </nav>
+    </main>
+
+    <!-- View a List of all recipes(Here you will be able to see the names of all added recipes) -->
+    <main role="main" id="js-view-budget" aria-live="assertive">
+        <h2 class="displayRecipes">My Recipes</h2>
+        <p class="hint">Hint: Click on recipe name to view the detailed recipe.</p>
+        <div>
+            <ul id="recipe-list">
+                <li><a href="#">Shrimp Tacos</a></li>
+                <li><a href="#">Spaghetti</a></li>
+                <li><a href="#">Camarones a la diabla</a></li>
+            </ul>
+            </div>
+    </main>
+    <!-- Form to add Recipe  -->
+    <main role="main" id="js-add-recipe" aria-live="assertive">
+        <div class="container">
+            <form action="action_page.php">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="rname">Recipe Name</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" name="recipename" placeholder="Name of your recipe.." required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="ingredients">Ingredients</label>
+                    </div>
+                    <div class="col-75">
+                        <textarea name="ingredients" placeholder="List ingredients and their measurements.." style="height:200px" required></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="instructions">Instructions</label>
+                    </div>
+                    <div class="col-75">
+                        <textarea name="instructions" placeholder="Write instructions on how to prepare this recipe.." style="height:200px" required></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="notes">Notes (optional)</label>
+                        </div>
+                        <div class="col-75">
+                            <textarea name="notes" placeholder="Write any helpful notes. For example, how many people will it serve..." style="height:200px"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+        <div id="js-added-recipe">
+            <h3 class='textBox'>Added!</h3>
+        </div>
+    </main>
+
+    <!--Detailed View of Recipe (This will appear when you click on name of recipe in "My recipes" page) -->
+    <main role="main" id="detailed-recipe-view" aria-live="assertive"></main>
+        <div id="recipe-form-output">
+            <p>Recipe Name:</p>
+            <p>Ingredients:</p>
+            <p>Instructions:</p>
+            <p>Notes:</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>Blanca Hernandez | Copyright 2018</p>
+    </footer>
+</body>
+
+<!-- SCRIPTS -->
+<script src="//code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+<script src="client.js"></script>
+
+        </html>

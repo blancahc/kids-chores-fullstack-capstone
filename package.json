@@ -1,0 +1,39 @@
+{
+    "name": "recipe-book-fullstack-capstone",
+    "version": "1.0.0",
+    "description": "Live Pre-view available at ?....................?",
+    "main": "server.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/blancahc/recipe-book-fullstack-capstone.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/blancahc/recipe-book-fullstack-capstone/issues"
+    },
+    "homepage": "https://github.com/blancahc/recipe-book-fullstack-capstone#readme",
+    "dependencies": {
+        "bcrypt": "^3.0.0",
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.18.3",
+        "cors": "^2.8.4",
+        "express": "^4.16.3",
+        "moment": "^2.22.2",
+        "mongodb": "^3.1.5",
+        "mongoose": "^5.2.14",
+        "passport": "^0.4.0",
+        "passport-http": "^0.3.0",
+        "unirest": "^0.5.1"
+    },
+    "devDependencies": {
+        "chai": "^4.1.2",
+        "chai-http": "^4.2.0",
+        "faker": "^4.1.0",
+        "mocha": "^5.2.0"
+    },
+    "scripts": {
+        "test": "mocha",
+        "start": "node server.js"
+    }
+}
