@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -87,7 +87,7 @@
                 <li><a href="#">Spaghetti</a></li>
                 <li><a href="#">Camarones a la diabla</a></li>
             </ul>
-            </div>
+        </div>
     </main>
     <!-- Form to add Recipe  -->
     <main role="main" id="js-add-recipe" aria-live="assertive">
@@ -127,17 +127,34 @@
                         </div>
                     </div>
                     <div class="row">
-                    <input type="submit" value="Submit">
+                        <input class="submit-button" type="submit" value="Submit">
+                    </div>
                 </div>
             </form>
         </div>
+
         <div id="js-added-recipe">
             <h3 class='textBox'>Added!</h3>
         </div>
     </main>
-
+    <!-- Search for Recipe  -->
+    <main role="main" aria-live="assertive">
+        <form class='js-searchForm'>
+            <section class="inputGroup">
+                <header>
+                    <p>Find recipes on the web.
+                    </p>
+                </header>
+                <label id="search-text" for="search">Enter food:
+                        <input type="text" placeholder="Pizza" name="search" id="search">
+                        <span id="errorFood"></span>
+                    </label>
+                </br>
+                <button class="submit-button" type="submit">See Results!</button>
+            </section>
+    </main>
     <!--Detailed View of Recipe (This will appear when you click on name of recipe in "My recipes" page) -->
-    <main role="main" id="detailed-recipe-view" aria-live="assertive"></main>
+    <main role="main" id="detailed-recipe-view" aria-live="assertive">
         <div id="recipe-form-output">
             <p>Recipe Name:</p>
             <p>Ingredients:</p>
@@ -156,4 +173,4 @@
 
 <script src="client.js"></script>
 
-        </html>
+</html>

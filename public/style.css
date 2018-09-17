@@ -19,16 +19,16 @@ html {
 /******LANDING PAGE AND SIGN UP PAGE******/
 
 .textBox {
-    /*    background-color: white;*/
-    padding: 20px;
-    border-radius: 8px;
-    opacity: .9;
     max-width: 800px;
     margin: 0 auto 30px auto;
     text-align: center;
     color: white;
+
 }
 
+p {
+    color: white;
+}
 
 #mainImg {
     display: block;
@@ -69,7 +69,6 @@ button:hover {
     font-weight: 600;
     margin: 0 auto 30px auto;
     background-color: #FFFF;
-    color: orangered;
     max-width: 350px;
     border: black solid 1px;
     border-radius: 7px;
@@ -77,6 +76,12 @@ button:hover {
     padding: 20px 0;
     text-align: center;
     opacity: .9;
+    color: black;
+
+}
+
+.sign-in-up-form p {
+    color: dimgray;
 }
 
 .demoInfo {
@@ -111,15 +116,17 @@ button:hover {
     font-size: 1.2rem;
     color: red;
     text-align: center;
+    background-color: none;
 }
 
 .submit-button {
     background-color: red;
     padding: 8px 18px;
     border-radius: 8px;
-    color: white;
     font-size: 1.2rem;
     margin: 0 auto;
+    color: white;
+    display: block;
 }
 
 /******NAVIGATION STYLES******/
@@ -154,7 +161,7 @@ button:hover {
 
 .nav-options a {
     color: white;
-    /*    text-decoration: none;*/
+    text-decoration: none;
 }
 
 .nav-options a:hover {
@@ -162,7 +169,7 @@ button:hover {
 }
 
 .signout-button {
-    background-color: forestgreen;
+    background-color: red;
     border-radius: 7px;
     padding: 5px;
     color: white;
@@ -193,20 +200,16 @@ button:hover {
 }
 
 .hint {
-    background-color: white;
-    padding: 10px;
-    border-radius: 8px;
-    opacity: .9;
     max-width: 500px;
     margin: 0 auto 30px auto;
     text-align: center;
-    font-size: .8rem;
 }
 
 #recipe-list {
     text-align: center;
     margin-bottom: 30px;
     list-style-type: none;
+    font-size: 1.5rem;
 }
 
 
@@ -216,14 +219,17 @@ button:hover {
 }
 
 #recipe-list a:hover {
-    color: darkred;
+    color: red;
     text-decoration: underline;
 }
 
 /******Add Recipes form******/
 
 /* Style inputs, select elements and textareas */
-input[type=text], select, textarea{
+
+input[type=text],
+select,
+textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -233,33 +239,26 @@ input[type=text], select, textarea{
 }
 
 /* Style the label to display next to the inputs */
+
 label {
     padding: 12px 12px 12px 0;
     display: inline-block;
-}
-
-/* Style the submit button */
-input[type=submit] {
-    background-color: darkred;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    float: right;
+    color: black;
 }
 
 /* Style the container */
+
 .container {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
-    width: 800px;
+    max-width: 800px;
     margin-right: auto;
     margin-left: auto;
 }
 
 /* Floating column for labels: 25% width */
+
 .col-25 {
     float: left;
     width: 25%;
@@ -267,6 +266,7 @@ input[type=submit] {
 }
 
 /* Floating column for inputs: 75% width */
+
 .col-75 {
     float: left;
     width: 75%;
@@ -274,6 +274,7 @@ input[type=submit] {
 }
 
 /* Clear floats after the columns */
+
 .row:after {
     content: "";
     display: table;
@@ -281,15 +282,22 @@ input[type=submit] {
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-    .col-25, .col-75, input[type=submit] {
-        width: 100%;
-        margin-top: 0;
-    }
+
+/******Search for Recipe******/
+
+.inputGroup {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10%;
 }
 
+#search-text {
+    color: white;
+}
 
 /******Detailed View of Recipe******/
+
 #recipe-form-output {
     width: 800px;
     margin-right: auto;
@@ -302,7 +310,6 @@ input[type=submit] {
 footer {
     text-align: center;
     background-color: black;
-    color: white;
     border-radius: 8px;
     margin: 20px auto 0 auto;
     opacity: .9;
@@ -336,10 +343,16 @@ footer {
         text-align: center;
         font-size: .8rem;
     }
+    .col-25,
+    .col-75 {
+        width: 100%;
+        margin-top: auto;
+    }
 }
 
 
 @media only screen and (max-width: 512px) {
+
     .navbar {
         width: 100%;
     }
@@ -358,4 +371,6 @@ footer {
     .hint {
         font-size: 1.1rem;
     }
+
+
 }
