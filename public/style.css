@@ -42,7 +42,7 @@ h1 {
 }
 
 .appName {
-    color: darkred;
+    color: #d1282e;
 }
 
 #appFeatures li {
@@ -114,13 +114,13 @@ button:hover {
 
 .signInUpLink {
     font-size: 1.2rem;
-    color: red;
+    color: #d1282e;
     text-align: center;
     background-color: none;
 }
 
 .submit-button {
-    background-color: red;
+    background-color: #d1282e;
     padding: 8px 18px;
     border-radius: 8px;
     font-size: 1.2rem;
@@ -169,7 +169,7 @@ button:hover {
 }
 
 .signout-button {
-    background-color: red;
+    background-color: #d1282e;
     border-radius: 7px;
     padding: 5px;
     color: white;
@@ -182,45 +182,23 @@ button:hover {
 
 }
 
-.formMessage {
-    font-size: .7rem;
-    color: forestgreen;
-}
-
 /********View a List of all Recipes Page***********************************/
 
 .displayRecipes {
-    background-color: black;
-    max-width: 500px;
-    margin: 0 auto 30px auto;
+    background-color: #d1282e;
+    opacity: .8;
+    max-width: 800px;
+    margin: 0 auto 10px auto;
     text-align: center;
-    color: white;
     border-radius: 8px;
-
 }
 
-.hint {
-    max-width: 500px;
-    margin: 0 auto 30px auto;
-    text-align: center;
-}
-
-#recipe-list {
-    text-align: center;
-    margin-bottom: 30px;
-    list-style-type: none;
-    font-size: 1.5rem;
-}
-
-
-#recipe-list a {
-    text-decoration: none;
-    color: white;
-}
-
-#recipe-list a:hover {
-    color: red;
+h3 {
     text-decoration: underline;
+}
+
+.container p {
+    color: black;
 }
 
 /******Add Recipes form******/
@@ -228,6 +206,7 @@ button:hover {
 /* Style inputs, select elements and textareas */
 
 input[type=text],
+input[type=tags],
 select,
 textarea {
     width: 100%;
@@ -253,8 +232,7 @@ label {
     background-color: #f2f2f2;
     padding: 20px;
     max-width: 800px;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 0 auto 10px auto;
 }
 
 /* Floating column for labels: 25% width */
@@ -293,15 +271,6 @@ label {
 }
 
 #search-text {
-    color: white;
-}
-
-/******Detailed View of Recipe******/
-
-#recipe-form-output {
-    width: 800px;
-    margin-right: auto;
-    margin-left: auto;
     color: white;
 }
 
