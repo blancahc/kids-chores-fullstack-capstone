@@ -14,17 +14,19 @@
 <body>
     <input type="hidden" id="loggedInUserName" value="">
     <!-- *****************************************Landing Page************************************************************       -->
-    <main role="main" id="js-landing-page" aria-live="assertive">
-        <img id="mainImg" src="images/logo.PNG" alt="savour saved logo image">
-        <div class="textBox">
+    <main class="hidden" role="main" id="js-landing-page" aria-live="assertive">
+        <div class="navbar">
+            <img class="logoImg" src="images/logo.PNG" alt="savour saved logo image">
             <h1>Create your virtual recipe book with <span class="appName">SavourSaved!</span>
             </h1>
-            <br>
+        </div>
+
+        <div class="textBox">
             <div id="appFeatures">
                 <ul>
-                    <li>~ Search for recipes ~
+                    <li>~ Save your recipes ~
                     </li>
-                    <li>~ Save your favorite recipes ~
+                    <li>~ Easily search for your saved recipes ~
                     </li>
                 </ul>
             </div>
@@ -36,7 +38,7 @@
                     <input type="name" id="loginUsername" placeholder="admin" value="admin">
                     <label for="loginPassword">Password</label>
                     <input type="password" id="loginPassword" placeholder="admin123" value="admin123">
-                    <p class="demoInfo">For a demo use username: <i>admin</i>, password: <i>admin123</i></p>
+                    <p class="demoInfo">Demo username: <i>admin</i>, password: <i>admin123</i></p>
                 </fieldset>
                 <button type="submit" class="submit-button" id="login-button">Sign In</button>
                 <br>
@@ -47,7 +49,7 @@
 
         <!--        placeholder for replacing public recipes-->
         <h2 class="displayRecipes"> Publicly Shared Recipes</h2>
-        <div class="container">
+        <div class="saved-recipes">
             <h3>Recipe Name:</h3>
             <p>Dummy recipe #1</p>
             <h3>Ingredients:</h3>
@@ -61,7 +63,7 @@
             <h3>Notes:</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
         </div>
-        <div class="container">
+        <div class="saved-recipes">
             <h3>Recipe Name:</h3>
             <p>Dummy recipe #2</p>
             <h3>Ingredients:</h3>
@@ -78,7 +80,7 @@
     </main>
 
     <!-- *****************************************Sign Up Page************************************************************       -->
-    <main role="main" id="js-sign-up-page" aria-live="assertive">
+    <main class="hidden" role="main" id="js-sign-up-page" aria-live="assertive">
         <form class="sign-in-up-form" id="js-sign-up-form">
             <legend>Sign up</legend>
             <fieldset>
@@ -99,47 +101,57 @@
         <nav class="navbar">
             <span class="nav-options">
                     <ul>
-                        <li><img id="logoImg" src="images/logo.PNG" alt="savour recipe logo image"></li>
-                        <li><a href="#" id="js-nav-budget">My Recipes</a></li>
-                        <li><a href="#" id="js-nav-add-budget">Search for Recipe</a></li>
-                        <li><a href="#" id="js-nav-add-budget">Add a Recipe</a></li>
-                        <li><button id="js-signout-button" class="signout-button" type="button"> Sign Out</button></li>
+                        <li><img class="logoImg" src="images/logo.PNG" alt="savour recipe logo image"></li>
+                        <li><a href="#">My Recipes</a></li>
+                        <li><a href="#">Add a Recipe</a></li>
+                        <li><button class="signout-button" type="button"> Sign Out</button></li>
                     </ul>
                 </span>
         </nav>
     </main>
 
     <!-- View a List of all recipes(Here you will be able to see the names of all added recipes) -->
-    <main role="main" id="js-view-budget" aria-live="assertive">
-        <h2 class="displayRecipes">My Recipes</h2>
-        <div class="container">
-            <h3>Recipe Name:</h3>
-            <p>Dummy recipe #1</p>
-            <h3>Ingredients:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <h3>Instructions:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <h3>Tags:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-            <h3>Notes:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-        </div>
-        <div class="container">
-            <h3>Recipe Name:</h3>
-            <p>Dummy recipe #2</p>
-            <h3>Ingredients:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <h3>Instructions:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <h3>Tags:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-            <h3>Notes:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-        </div>
+    <main role="main" aria-live="assertive">
+        <!-- Search for Recipe  -->
+        <form class='js-searchForm'>
+            <section class="inputGroup">
+                <label class="search-text" for="search">Enter keyword to search for a recipe:
+                        <input type="text" placeholder="veggie" name="search" id="search">
+                        <span id="errorFood"></span>
+                    </label>
+                </br>
+                <button class="submit-button" type="submit">Search!</button>
+            </section>
+    </main>
+    <h2 class="displayRecipes">My Recipes</h2>
+    <div class="saved-recipes">
+        <h3>Recipe Name:</h3>
+        <p>Dummy recipe #1</p>
+        <h3>Ingredients:</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h3>Instructions:</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h3>Tags:</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        <h3>Notes:</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+    </div>
+    <div class="saved-recipes">
+        <h3>Recipe Name:</h3>
+        <p>Dummy recipe #2</p>
+        <h3>Ingredients:</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h3>Instructions:</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h3>Tags:</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        <h3>Notes:</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+    </div>
     </main>
     <!-- Form to add Recipe  -->
     <main role="main" id="js-add-recipe" aria-live="assertive">
@@ -187,6 +199,16 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-25">
+                            <label> Share Publicly:</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="checkbox" name="share" value="Yes" checked>Yes<br>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
                         <input class="submit-button" type="submit" value="Submit">
                     </div>
                 </div>
@@ -196,22 +218,6 @@
         <div id="js-added-recipe">
             <h3 class='textBox'>Added!</h3>
         </div>
-    </main>
-    <!-- Search for Recipe  -->
-    <main role="main" aria-live="assertive">
-        <form class='js-searchForm'>
-            <section class="inputGroup">
-                <header>
-                    <p>Find recipes on the web.
-                    </p>
-                </header>
-                <label id="search-text" for="search">Enter food:
-                        <input type="text" placeholder="Pizza" name="search" id="search">
-                        <span id="errorFood"></span>
-                    </label>
-                </br>
-                <button class="submit-button" type="submit">See Results!</button>
-            </section>
     </main>
 
     <footer>
