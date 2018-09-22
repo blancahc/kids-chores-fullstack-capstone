@@ -14,7 +14,7 @@
 <body>
     <input type="hidden" id="loggedInUserName" value="">
     <!-- *****************************************Landing Page************************************************************       -->
-    <main class="hidden" role="main" id="js-landing-page" aria-live="assertive">
+    <main role="main" id="js-landing-page" aria-live="assertive">
         <div class="navbar">
             <img class="logoImg" src="images/logo.PNG" alt="savour saved logo image">
             <h1>Create your virtual recipe book with <span class="appName">SavourSaved!</span>
@@ -80,7 +80,7 @@
     </main>
 
     <!-- *****************************************Sign Up Page************************************************************       -->
-    <main class="hidden" role="main" id="js-sign-up-page" aria-live="assertive">
+    <main role="main" id="js-sign-up-page" aria-live="assertive">
         <form class="sign-in-up-form" id="js-sign-up-form">
             <legend>Sign up</legend>
             <fieldset>
@@ -104,7 +104,7 @@
                         <li><img class="logoImg" src="images/logo.PNG" alt="savour recipe logo image"></li>
                         <li><a href="#">My Recipes</a></li>
                         <li><a href="#">Add a Recipe</a></li>
-                        <li><button class="signout-button" type="button"> Sign Out</button></li>
+                        <li><button class="signout-button" id='js-signout-button' type="button"> Sign Out</button></li>
                     </ul>
                 </span>
         </nav>
@@ -119,39 +119,39 @@
                         <input type="text" placeholder="veggie" name="search" id="search">
                         <span id="errorFood"></span>
                     </label>
-                </br>
+                <br>
                 <button class="submit-button" type="submit">Search!</button>
             </section>
-    </main>
-    <h2 class="displayRecipes">My Recipes</h2>
-    <div class="saved-recipes">
-        <h3>Recipe Name:</h3>
-        <p>Dummy recipe #1</p>
-        <h3>Ingredients:</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <h3>Instructions:</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <h3>Tags:</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-        <h3>Notes:</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-    </div>
-    <div class="saved-recipes">
-        <h3>Recipe Name:</h3>
-        <p>Dummy recipe #2</p>
-        <h3>Ingredients:</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <h3>Instructions:</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <h3>Tags:</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-        <h3>Notes:</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-    </div>
+        </form>
+        <h2 class="displayRecipes">My Recipes</h2>
+        <div class="saved-recipes">
+            <h3>Recipe Name:</h3>
+            <p>Dummy recipe #1</p>
+            <h3>Ingredients:</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <h3>Instructions:</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <h3>Tags:</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            <h3>Notes:</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        </div>
+        <div class="saved-recipes">
+            <h3>Recipe Name:</h3>
+            <p>Dummy recipe #2</p>
+            <h3>Ingredients:</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <h3>Instructions:</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <h3>Tags:</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            <h3>Notes:</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        </div>
     </main>
     <!-- Form to add Recipe  -->
     <main role="main" id="js-add-recipe" aria-live="assertive">
@@ -223,11 +223,11 @@
     <footer>
         <p>Blanca Hernandez | Copyright 2018</p>
     </footer>
+
+    <!-- SCRIPTS -->
+    <script src="http://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+    <script src="client.js"></script>
 </body>
-
-<!-- SCRIPTS -->
-<script src="//code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-
-<script src="client.js"></script>
 
 </html>

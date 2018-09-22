@@ -11,11 +11,6 @@ html {
     background-size: cover;
 }
 
-.hidden {
-    display: none;
-}
-
-
 /******LANDING PAGE AND SIGN UP PAGE******/
 
 .textBox {
@@ -294,6 +289,7 @@ footer {
     max-width: 850px;
     bottom: 0;
     height: 60px;
+    color: white;
 
 }
 
