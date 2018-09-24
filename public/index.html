@@ -35,10 +35,11 @@
                 <legend>Sign In</legend>
                 <fieldset>
                     <label for="loginUsername">Username</label>
-                    <input type="name" id="loginUsername" placeholder="admin" value="admin">
+                    <input type="name" id="loginUsername" placeholder="john2" value="john2">
                     <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" placeholder="admin123" value="admin123">
-                    <p class="demoInfo">Demo username: <i>admin</i>, password: <i>admin123</i></p>
+                    <input type="password" id="loginPassword" placeholder="treicky62" value="treicky62">
+                    <p class="demoInfo">For a demo use username: <i>admin</i>,</p>
+                    <p class="demoInfo"> password: <i>admin123</i></p>
                 </fieldset>
                 <button type="submit" class="submit-button" id="login-button">Sign In</button>
                 <br>
@@ -48,7 +49,7 @@
         </div>
 
         <!--        placeholder for replacing public recipes-->
-        <h2 class="displayRecipes"> Publicly Shared Recipes</h2>
+        <h2 class="displayRecipes"> Recipes Shared by SavourSaved users</h2>
         <div class="saved-recipes">
             <h3>Recipe Name:</h3>
             <p>Dummy recipe #1</p>
@@ -99,19 +100,20 @@
     <!-- *****************************************Navigation when Logged In************************************************************ -->
     <main role="main" id="js-navigation" aria-live="assertive">
         <nav class="navbar">
+            <img class="logoImg" src="images/logo.PNG" alt="savour recipe logo image">
             <span class="nav-options">
                     <ul>
-                        <li><img class="logoImg" src="images/logo.PNG" alt="savour recipe logo image"></li>
-                        <li><a href="#">My Recipes</a></li>
-                        <li><a href="#">Add a Recipe</a></li>
+                        <li><a id="js-nav-my-recipes" href="#">My Recipes</a></li>
+                        <li><a id="js-nav-add-recipe" href="#">Add a Recipe</a></li>
                         <li><button class="signout-button" id='js-signout-button' type="button"> Sign Out</button></li>
                     </ul>
                 </span>
         </nav>
+
     </main>
 
     <!-- View a List of all recipes(Here you will be able to see the names of all added recipes) -->
-    <main role="main" aria-live="assertive">
+    <main role="main" id="js-my-recipes-page" aria-live="assertive">
         <!-- Search for Recipe  -->
         <form class='js-searchForm'>
             <section class="inputGroup">
@@ -156,13 +158,13 @@
     <!-- Form to add Recipe  -->
     <main role="main" id="js-add-recipe" aria-live="assertive">
         <div class="container">
-            <form action="action_page.php">
+            <form action="action_page.php" id="js-add-form">
                 <div class="row">
                     <div class="col-25">
                         <label for="rname">Recipe Name</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" name="recipename" placeholder="Name of your recipe.." required>
+                        <input type="text" name="recipename" id="js-recipename" value="Veggie Pizza" placeholder="Name of your recipe..">
                     </div>
                 </div>
                 <div class="row">
@@ -170,7 +172,7 @@
                         <label for="ingredients">Ingredients</label>
                     </div>
                     <div class="col-75">
-                        <textarea name="ingredients" placeholder="List ingredients and their measurements.." required></textarea>
+                        <textarea name="ingredients" id="js-ingredients" placeholder="List ingredients and their measurements.." value="cheese, onion, tomato, dough"></textarea>
                     </div>
                 </div>
                 <div class="row">
@@ -178,7 +180,7 @@
                         <label for="instructions">Instructions</label>
                     </div>
                     <div class="col-75">
-                        <textarea name="instructions" placeholder="Write instructions on how to prepare this recipe.." required></textarea>
+                        <textarea name="instructions" id="js-instructions" placeholder="Write instructions on how to prepare this recipe.." value="mix everything and put in in the over"></textarea>
                     </div>
                 </div>
                 <div class="row">
@@ -186,7 +188,7 @@
                         <label for="tags">Tags:</label>
                     </div>
                     <div class="col-75">
-                        <input type="tags" placeholder="Add tags to help you search for this recipe in the future. I.e., 'dessert', 'pastry', 'sour'" id="tags" />
+                        <input type="tags" id="js-tags" placeholder="Add tags to help you search for this recipe in the future. I.e., 'dessert', 'pastry', 'sour'" value="pizza, veggie, maindish" id="tags" />
                     </div>
                 </div>
                 <div class="row">
@@ -195,15 +197,15 @@
                             <label for="notes">Notes (optional)</label>
                         </div>
                         <div class="col-75">
-                            <textarea name="notes" placeholder="Write any helpful notes. For example, how many people will it serve..." style="height:200px"></textarea>
+                            <textarea name="notes" id="js-notes" placeholder="Write any helpful notes. For example, how many people will it serve..." value="blah, blah, blah" style="height:200px"></textarea>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-25">
-                            <label> Share Publicly:</label>
+                            <label>Share Publicly?</label>
                         </div>
                         <div class="col-75">
-                            <input type="checkbox" name="share" value="Yes" checked>Yes<br>
+                            <input type="checkbox" id="js-shared" name="share" value="Yes" checked>Check this box to share this recipe in the SavourSaved home page<br> <br>
                         </div>
 
                     </div>
@@ -214,10 +216,11 @@
                 </div>
             </form>
         </div>
+    </main>
 
-        <div id="js-added-recipe">
-            <h3 class='textBox'>Added!</h3>
-        </div>
+    <!--  ****************************Show message when adding a recipe*******************-->
+    <main role="main" id="js-added-recipe">
+        <p id="added-message">Added!</p>
     </main>
 
     <footer>
@@ -226,7 +229,6 @@
 
     <!-- SCRIPTS -->
     <script src="http://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-
     <script src="client.js"></script>
 </body>
 

@@ -2,8 +2,8 @@
 
 const mongoose = require('mongoose');
 
-const categorySchema = new mongoose.Schema({
-    categoryName: {
+const recipeSchema = new mongoose.Schema({
+    recipeName: {
         type: String,
         required: false
     },
@@ -13,6 +13,6 @@ const categorySchema = new mongoose.Schema({
     }
 });
 
-const Category = mongoose.model('Category', categorySchema);
+const Recipe = mongoose.model('Recipe', recipeSchema);
 
-module.exports = Category
+module.exports = Recipe

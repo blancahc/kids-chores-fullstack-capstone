@@ -79,10 +79,12 @@ button:hover {
     color: dimgray;
 }
 
+
+
 .sign-in-up-form legend {
-    margin: auto;
+    margin: 0 auto 15px auto;
     padding: 5px;
-    border-bottom: black solid 1.1px;
+    border-bottom: black solid 1px;
     width: 100%;
     font-size: 1.7rem;
 }
@@ -134,8 +136,8 @@ button:hover {
 
 .logoImg {
     width: 100px;
+    margin-top: 7px;
     border-radius: 7px;
-    margin-top: 10px;
 }
 
 .navbar {
@@ -149,16 +151,16 @@ button:hover {
 
 .navbar ul {
     display: inline-block;
-    margin: 0;
+    width: 80%;
+    vertical-align: middle;
 
 }
 
 
 .nav-options li {
     display: inline-block;
-    padding-right: 20px;
+    padding: 10px;
     font-size: 1.2rem;
-    vertical-align: middle;
 }
 
 .nav-options a {
@@ -218,6 +220,7 @@ textarea {
     border-radius: 4px;
     box-sizing: border-box;
     resize: vertical;
+    font-size: 1rem;
 }
 
 /* Style the label to display next to the inputs */
@@ -226,6 +229,7 @@ label {
     padding: 12px 12px 12px 0;
     display: inline-block;
     color: black;
+    font-weight: 600;
 }
 
 /* Style the container */
@@ -262,8 +266,6 @@ label {
     clear: both;
 }
 
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-
 /******Search for Recipe******/
 
 .inputGroup {
@@ -274,6 +276,15 @@ label {
 }
 
 .search-text {
+    font-weight: 600;
+}
+
+/***********Added message************/
+
+#added-message {
+    margin: 60px auto 400px auto;
+    font-size: 1rem;
+    text-align: center;
     font-weight: 600;
 }
 
@@ -312,16 +323,38 @@ footer {
         width: 100%;
         margin-top: auto;
     }
+
+    #added-message {
+        font-size: 1.4rem;
+    }
+
+    input[type=text],
+    input[type=tags],
+    select,
+    textarea {
+        font-size-adjust: auto;
+    }
+
+    .logoImg {
+        width: 70px;
+    }
 }
 
 
-@media only screen and (max-width: 512px) {
+
+@media only screen and (max-width: 565px) {
 
     .navbar {
         width: 100%;
     }
 
-    .navbar li {
+    .logoImg {
+        margin-top: 10px;
+        margin-left: 30px;
+    }
+
+    .nav-options li {
+        margin: 0;
         display: block;
     }
 
@@ -337,6 +370,11 @@ footer {
         display: block;
         text-align: center;
         width: 100%;
+    }
+
+    #added-message {
+        font-size: 1.7rem;
+
     }
 
 

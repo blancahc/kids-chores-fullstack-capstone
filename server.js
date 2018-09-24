@@ -1,5 +1,5 @@
 const User = require('./models/user');
-const Category = require('./models/category');
+const Recipe = require('./models/recipe');
 const Subcategory = require('./models/subcategory');
 const Transaction = require('./models/transaction');
 const bodyParser = require('body-parser');
@@ -177,6 +177,54 @@ app.post('/users/login', function (req, res) {
     });
 });
 
+// creating a new Recipe
+app.post('/recipes/create', (req, res) => {
+    let recipename = req.body.recipename;
+    let username = req.body.username;
+    let ingredients = req.body.ingredients;
+    let instructions = req.body.instructions;
+    let tags = req.body.tags;
+    let notes = req.body.notes;
+    let shared = req.body.shared;
+
+    Recipe.create({
+        recipename,
+        username,
+        ingredients,
+        instructions,
+        tags,
+        notes,
+        shared
+
+    }, (err, item) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        }
+        if (item) {
+            return res.json(item);
+        }
+    });
+});
+
+//GET recipe by username
+app.get('/recipe/get/:username', function (req, res) {
+    console.log(req.params.username);
+    Recipe.find({
+        username: req.params.username
+    },
+                     function (err, item) {
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        } else {
+            res.status(200).json(item);
+        }
+    });
+});
+
 // -------------category ENDPOINTS------------------------------------------------
 // POST -----------------------------------------
 // creating a new Category
@@ -202,17 +250,17 @@ app.post('/category/create', (req, res) => {
 app.get('/category/get/:username', function (req, res) {
     console.log(req.params.username);
     Category.find({
-        username: req.params.username
-    },
-                  function (err, item) {
-        if (err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
-            });
-        } else {
-            res.status(200).json(item);
-        }
-    });
+            username: req.params.username
+        },
+        function (err, item) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Internal Server Error'
+                });
+            } else {
+                res.status(200).json(item);
+            }
+        });
 });
 // ------------subcategory ENDPOINTS------------------------------------------------
 // POST -----------------------------------------
@@ -245,70 +293,26 @@ app.post('/subcategory/create', (req, res) => {
 app.get('/subcategory/get/:username', function (req, res) {
     console.log(req.params.username);
     Subcategory.find({
-        username: req.params.username
-    },
-                     function (err, item) {
-        if (err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
-            });
-        } else {
-            res.status(200).json(item);
-        }
+            username: req.params.username
+        },
+        function (err, item) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Internal Server Error'
+                });
+            } else {
+                res.status(200).json(item);
+            }
 
-        function jsUcfirst(string) {
-            return string.charAt(0).toUpperCase() + string.slice(1);
-        }
-    }).sort("subcategoryName");
+            function jsUcfirst(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+        }).sort("subcategoryName");
 
 });
 
 // -------------transaction ENDPOINTS------------------------------------------------
 // POST -----------------------------------------
-// creating a new Transaction
-app.post('/transaction/create', (req, res) => {
-    let transactionCategoryName = req.body.transactionCategoryName;
-    let transactionSubcategoryName = req.body.transactionSubcategoryName;
-    let transactionMonthName = req.body.transactionMonthName;
-    let transactionAmount = req.body.transactionAmount;
-    let incomeExpenseTransaction = req.body.incomeExpenseTransaction;
-    let username = req.body.username;
-
-    Transaction.create({
-        transactionCategoryName,
-        transactionSubcategoryName,
-        transactionMonthName,
-        transactionAmount,
-        incomeExpenseTransaction,
-        username
-    }, (err, item) => {
-        if (err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
-            });
-        }
-        if (item) {
-            return res.json(item);
-        }
-    });
-});
-
-//GET transaction by username
-app.get('/transaction/get/:username', function (req, res) {
-    console.log(req.params.username);
-    Transaction.find({
-        username: req.params.username
-    },
-                     function (err, item) {
-        if (err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
-            });
-        } else {
-            res.status(200).json(item);
-        }
-    });
-});
 
 // DELETE ----------------------------------------
 // deleting a transaction by id
