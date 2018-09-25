@@ -1,4 +1,46 @@
 //Defined functions and objects
+function displayAddedRecipes() {
+    const username = $('#loggedInUserName').val();
+    console.log(username);
+    $.ajax({
+            type: 'GET',
+            url: '/recipe/get/' + username,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            if ((!result) || (result != undefined) || (result != "")) {
+
+                $("#js-display-recipes").html('');
+                var buildAddedRecipes = "";
+
+                $.each(result, function (resultKey, resultValue) {
+                    buildAddedRecipes += '<div class="saved-recipes">';
+                    buildAddedRecipes += '<h3>Recipe Name:</h3>';
+                    buildAddedRecipes += '<p>' + resultValue.recipeName + '</p>';
+                    buildAddedRecipes += '<h3>Ingredients:</h3>';
+                    buildAddedRecipes += '<p>' + resultValue.ingredients + '</p>';
+                    buildAddedRecipes += '<h3>Instructions:</h3>'
+                    buildAddedRecipes += '<p>' + resultValue.instructions + '</p>';
+                    buildAddedRecipes += '<h3>Tags:</h3>'
+                    buildAddedRecipes += '<p>' + resultValue.tags + '</p>';
+                    buildAddedRecipes += '<h3>Notes:</h3>'
+                    buildAddedRecipes += '<p>' + resultValue.notes + '</p>';
+                    buildAddedRecipes += '<h3>Share Publicly?</h3>';
+                    buildAddedRecipes += '<input type="hidden">' + resultValue.shared + '<input>';
+                    buildAddedRecipes += '<p>' + isItShared + '</p>';
+                    buildAddedRecipes += '</div>';
+                });
+                //use the HTML output to show it in the index.html
+                $("#js-display-recipes").html(buildAddedRecipes);
+            }
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
 
 // Triggers
 
@@ -131,7 +173,7 @@ $('#js-add-form').on('submit', function (event) {
 
     //take the input from the user
     const username = $("#loggedInUserName").val();
-    const recipename = $("#js-recipename").val();
+    const recipeName = $("#js-recipeName").val();
     const ingredients = $("#js-ingredients").val();
     const instructions = $("#js-instructions").val();
     const tags = $("#js-tags").val();
@@ -139,7 +181,7 @@ $('#js-add-form').on('submit', function (event) {
     const shared = $("#js-shared").val();
 
     //validate the input
-    if (recipename == "") {
+    if (recipeName == "") {
         alert('Please add a recipe name');
     } else if (ingredients == "") {
         alert('Please enter the ingredients');
@@ -152,7 +194,7 @@ $('#js-add-form').on('submit', function (event) {
     else {
         //create the payload object (what data we send to the api call)
         const newRecipeObject = {
-            recipename: recipename,
+            recipeName: recipeName,
             username: username,
             ingredients: ingredients,
             instructions: instructions,
@@ -196,9 +238,10 @@ $('#js-nav-add-recipe').on('click', function (event) {
     $('#js-navigation').show();
 });
 
-//Click on Add Recipe nav menu uption
+//Click on My Recipes nav menu uption
 $('#js-nav-my-recipes').on('click', function (event) {
     event.preventDefault();
+    displayAddedRecipes();
     $('main').hide();
     $('#js-my-recipes-page').show();
     $('#js-navigation').show();

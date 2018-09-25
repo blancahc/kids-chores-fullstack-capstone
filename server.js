@@ -1,7 +1,5 @@
 const User = require('./models/user');
 const Recipe = require('./models/recipe');
-const Subcategory = require('./models/subcategory');
-const Transaction = require('./models/transaction');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const mongoose = require('mongoose');
@@ -177,9 +175,11 @@ app.post('/users/login', function (req, res) {
     });
 });
 
+// -------------recipe ENDPOINTS------------------------------------------------
+// POST -----------------------------------------
 // creating a new Recipe
 app.post('/recipes/create', (req, res) => {
-    let recipename = req.body.recipename;
+    let recipeName = req.body.recipeName;
     let username = req.body.username;
     let ingredients = req.body.ingredients;
     let instructions = req.body.instructions;
@@ -188,7 +188,7 @@ app.post('/recipes/create', (req, res) => {
     let shared = req.body.shared;
 
     Recipe.create({
-        recipename,
+        recipeName,
         username,
         ingredients,
         instructions,
@@ -214,7 +214,7 @@ app.get('/recipe/get/:username', function (req, res) {
     Recipe.find({
         username: req.params.username
     },
-                     function (err, item) {
+    function (err, item) {
         if (err) {
             return res.status(500).json({
                 message: 'Internal Server Error'
