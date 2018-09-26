@@ -64,9 +64,7 @@ button:hover {
     padding: 10px;
     text-align: center;
     opacity: .9;
-    color: black;
-
-}
+    color: black;}
 
 .sign-in-up-form p {
     color: dimgrey;

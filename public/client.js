@@ -1,7 +1,9 @@
 //Defined functions and objects
 function displayAddedRecipes() {
     const username = $('#loggedInUserName').val();
+    const shared = $('#js-shared').is(':checked');
     console.log(username);
+    console.log(shared);
     $.ajax({
             type: 'GET',
             url: '/recipe/get/' + username,
@@ -13,6 +15,7 @@ function displayAddedRecipes() {
 
                 $("#js-display-recipes").html('');
                 var buildAddedRecipes = "";
+                var isShared = "";
 
                 $.each(result, function (resultKey, resultValue) {
                     buildAddedRecipes += '<div class="saved-recipes">';
@@ -27,10 +30,16 @@ function displayAddedRecipes() {
                     buildAddedRecipes += '<h3>Notes:</h3>'
                     buildAddedRecipes += '<p>' + resultValue.notes + '</p>';
                     buildAddedRecipes += '<h3>Share Publicly?</h3>';
-                    buildAddedRecipes += '<input type="hidden">' + resultValue.shared + '<input>';
-                    buildAddedRecipes += '<p>' + isItShared + '</p>';
+                    //                  buildAddedRecipes += '<input type="hidden">' + resultValue.shared + '<input>';
+                    buildAddedRecipes += '<p id="js-is-shared">' + isShared + '</p>';
                     buildAddedRecipes += '</div>';
+                    if (resultValue.shared == "true") {
+                        isShared = "Yes";
+                    } else {
+                        isShared = "No";
+                    }
                 });
+
                 //use the HTML output to show it in the index.html
                 $("#js-display-recipes").html(buildAddedRecipes);
             }
@@ -40,7 +49,7 @@ function displayAddedRecipes() {
             console.log(error);
             console.log(errorThrown);
         });
-}
+};
 
 // Triggers
 
@@ -178,8 +187,8 @@ $('#js-add-form').on('submit', function (event) {
     const instructions = $("#js-instructions").val();
     const tags = $("#js-tags").val();
     const notes = $("#js-notes").val();
-    const shared = $("#js-shared").val();
-
+    const shared = $("#js-shared").is(':checked');
+    console.log(shared);
     //validate the input
     if (recipeName == "") {
         alert('Please add a recipe name');
