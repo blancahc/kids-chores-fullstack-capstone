@@ -1,9 +1,7 @@
 //Defined functions and objects
 function displayAddedRecipes() {
     const username = $('#loggedInUserName').val();
-    const shared = $('#js-shared').is(':checked');
     console.log(username);
-    console.log(shared);
     $.ajax({
             type: 'GET',
             url: '/recipe/get/' + username,
@@ -31,18 +29,19 @@ function displayAddedRecipes() {
                     buildAddedRecipes += '<p>' + resultValue.notes + '</p>';
                     buildAddedRecipes += '<h3>Share Publicly?</h3>';
                     //                  buildAddedRecipes += '<input type="hidden">' + resultValue.shared + '<input>';
-                    buildAddedRecipes += '<p id="js-is-shared">' + isShared + '</p>';
+                    buildAddedRecipes += '<p>' + resultValue.shared + '</p>';
                     buildAddedRecipes += '</div>';
-                    if (resultValue.shared == "true") {
-                        isShared = "Yes";
-                    } else {
-                        isShared = "No";
-                    }
+                    //                    if (resultValue.shared === true) {
+                    //                        isShared = "Yes";
+                    //                    } else {
+                    //                        isShared = "No";
+                    //                    }
                 });
 
                 //use the HTML output to show it in the index.html
                 $("#js-display-recipes").html(buildAddedRecipes);
             }
+
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -187,9 +186,8 @@ $('#js-add-form').on('submit', function (event) {
     const instructions = $("#js-instructions").val();
     const tags = $("#js-tags").val();
     const notes = $("#js-notes").val();
-    const shared = $("#js-shared").is(':checked');
-    console.log(shared);
-    //validate the input
+    const shared = $("input[name='shared-radio']:checked").val();
+    console.log(shared); //validate the input
     if (recipeName == "") {
         alert('Please add a recipe name');
     } else if (ingredients == "") {

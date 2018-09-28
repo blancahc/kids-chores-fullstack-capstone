@@ -64,7 +64,8 @@ button:hover {
     padding: 10px;
     text-align: center;
     opacity: .9;
-    color: black;}
+    color: black;
+}
 
 .sign-in-up-form p {
     color: dimgrey;
@@ -230,6 +231,21 @@ label {
     font-weight: 600;
 }
 
+.radio-btns {
+    display: inline-block;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.ui.radio.checkbox {
+    margin: 5px;
+    display: inline-block;
+}
+
+select,
+option {
+    padding: 8px;
+}
 /* Style the container */
 
 .container {
