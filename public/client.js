@@ -30,6 +30,11 @@ function displayAddedRecipes() {
                     buildAddedRecipes += '<h3>Share Publicly?</h3>';
                     //                  buildAddedRecipes += '<input type="hidden">' + resultValue.shared + '<input>';
                     buildAddedRecipes += '<p>' + resultValue.shared + '</p>';
+                    buildAddedRecipes += '<form class="deleteRecipeForm">';
+                    buildAddedRecipes += '<input type="hidden" class="deleteRecipeItem" value="' + resultValue._id + '" >';
+                    buildAddedRecipes += '<button type="submit" class="deleteItemButton" value="">';
+                    buildAddedRecipes += '<i class="fa fa-minus-square-o" aria-hidden="true"></i>';
+                    buildAddedRecipes += '</button>';
                     buildAddedRecipes += '</div>';
                     //                    if (resultValue.shared === true) {
                     //                        isShared = "Yes";
@@ -49,6 +54,32 @@ function displayAddedRecipes() {
             console.log(errorThrown);
         });
 };
+//Delete a recipe
+$(document).on('submit', '.deleteTransactionForm', function (event) {
+    event.preventDefault();
+    let transactionIdToDelete = $(this).parent().find('.deleteTransactionItem').val();
+    let transactionObject = {
+        'id': transactionIdToDelete
+    };
+    $.ajax({
+            method: 'DELETE',
+            dataType: 'json',
+            contentType: 'application/json',
+            url: '/delete-from-transaction-list/' + transactionIdToDelete,
+        })
+        .done(function (result) {
+            displaySubcategorySummary();
+            displayTransactionHistory();
+            alert('Removed!', 'Maybe next time...', 'success');
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+            alert('Oops...', 'Please try again', 'error');
+        });
+});
+
 
 // Triggers
 
@@ -253,6 +284,58 @@ $('#js-nav-my-recipes').on('click', function (event) {
     $('#js-my-recipes-page').show();
     $('#js-navigation').show();
 });
+
+////User will be able to remove item from transactions history
+$(document).on('submit', '.deleteTransactionForm', function (event) {
+    event.preventDefault();
+    let transactionIdToDelete = $(this).parent().find('.deleteTransactionItem').val();
+    let transactionObject = {
+        'id': transactionIdToDelete
+    };
+    $.ajax({
+            method: 'DELETE',
+            dataType: 'json',
+            contentType: 'application/json',
+            url: '/delete-from-transaction-list/' + transactionIdToDelete,
+        })
+        .done(function (result) {
+            displaySubcategorySummary();
+            displayTransactionHistory();
+            alert('Removed!', 'Maybe next time...', 'success');
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+            alert('Oops...', 'Please try again', 'error');
+        });
+});
+
+////User will be able to remove item from recipe history
+$(document).on('submit', '.deleteRecipeForm', function (event) {
+    event.preventDefault();
+    let recipeIdToDelete = $(this).parent().find('.deleteRecipeItem').val();
+    let recipeObject = {
+        'id': recipeIdToDelete
+    };
+    $.ajax({
+            method: 'DELETE',
+            dataType: 'json',
+            contentType: 'application/json',
+            url: '/delete-from-recipe-list/' + recipeIdToDelete,
+        })
+        .done(function (result) {
+            displayAddedRecipes();
+            alert('Removed!', 'Maybe next time...', 'success');
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+            alert('Oops...', 'Please try again', 'error');
+        });
+});
+
 
 ////button triggers
 //$(document).on('click', 'button', function (event) {
