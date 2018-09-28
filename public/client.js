@@ -1,4 +1,24 @@
 //Defined functions and objects
+function sanitizedClasses(rawString) {
+    //using Regular expresions https://en.wikipedia.org/wiki/Regular_expression for details and http://regexr.com/ to experience it
+    let rawStringLowerCased = rawString.toLowerCase();
+    //    console.log("rawStringLowerCased = ", rawStringLowerCased);
+
+    //remove returns
+    let rawStringWihtoutReturns = rawStringLowerCased.replace(/(\r\n|\n|\r)/gm, " ");
+    //    console.log("rawStringWihtoutReturns = ", rawStringWihtoutReturns);
+
+    //remove apostrophes
+    let rawStringWihtoutApostrophe = rawStringWihtoutReturns.replace(/'/gm, '');
+    //    console.log("rawStringWihtoutApostrophe = ", rawStringWihtoutApostrophe);
+
+    //remove punctuation and convert the string into an array by using the split method
+    let rawStringWihtoutPunctuation = rawStringWihtoutApostrophe.replace(/[ ,!.";():-]+/g, " ");
+    //    console.log("rawStringWihtoutPunctuation = ", rawStringWihtoutPunctuation);
+
+    return rawStringWihtoutPunctuation;
+}
+
 function displayAddedRecipes() {
     const username = $('#loggedInUserName').val();
     console.log(username);
@@ -12,8 +32,57 @@ function displayAddedRecipes() {
             if ((!result) || (result != undefined) || (result != "")) {
 
                 $("#js-display-recipes").html('');
-                var buildAddedRecipes = "";
-                var isShared = "";
+                let buildAddedRecipes = "";
+
+                $.each(result, function (resultKey, resultValue) {
+                    buildAddedRecipes += '<div class="saved-recipes ' + sanitizedClasses(resultValue.recipeName) + ' ' + sanitizedClasses(resultValue.tags) + '">';
+                    buildAddedRecipes += '<h3>Recipe Name:</h3>';
+                    buildAddedRecipes += '<p>' + resultValue.recipeName + '</p>';
+                    buildAddedRecipes += '<h3>Ingredients:</h3>';
+                    buildAddedRecipes += '<p>' + resultValue.ingredients + '</p>';
+                    buildAddedRecipes += '<h3>Instructions:</h3>'
+                    buildAddedRecipes += '<p>' + resultValue.instructions + '</p>';
+                    buildAddedRecipes += '<h3>Tags:</h3>'
+                    buildAddedRecipes += '<p>' + resultValue.tags + '</p>';
+                    buildAddedRecipes += '<h3>Notes:</h3>'
+                    buildAddedRecipes += '<p>' + resultValue.notes + '</p>';
+                    buildAddedRecipes += '<h3>Share Publicly?</h3>';
+                    buildAddedRecipes += '<p>' + resultValue.shared + '</p>';
+                    buildAddedRecipes += '<form class="deleteRecipeForm">';
+                    buildAddedRecipes += '<input type="hidden" class="deleteRecipeItem" value="' + resultValue._id + '" >';
+                    buildAddedRecipes += '<button type="submit" class="deleteItemButton" value="">';
+                    buildAddedRecipes += '<i class="fa fa-minus-square-o" aria-hidden="true"></i>';
+                    buildAddedRecipes += '</button>';
+                    buildAddedRecipes += '</form>';
+                    buildAddedRecipes += '</div>';
+                });
+
+                //use the HTML output to show it in the index.html
+                $("#js-display-recipes").html(buildAddedRecipes);
+            }
+
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+};
+
+//display public recipes
+function displayPublicRecipes() {
+    $.ajax({
+            type: 'GET',
+            url: '/recipe/get-public/',
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            if ((!result) || (result != undefined) || (result != "")) {
+
+                $("#js-display-public-recipes").html('');
+                let buildAddedRecipes = "";
+                let isShared = "";
 
                 $.each(result, function (resultKey, resultValue) {
                     buildAddedRecipes += '<div class="saved-recipes">';
@@ -27,24 +96,11 @@ function displayAddedRecipes() {
                     buildAddedRecipes += '<p>' + resultValue.tags + '</p>';
                     buildAddedRecipes += '<h3>Notes:</h3>'
                     buildAddedRecipes += '<p>' + resultValue.notes + '</p>';
-                    buildAddedRecipes += '<h3>Share Publicly?</h3>';
-                    //                  buildAddedRecipes += '<input type="hidden">' + resultValue.shared + '<input>';
-                    buildAddedRecipes += '<p>' + resultValue.shared + '</p>';
-                    buildAddedRecipes += '<form class="deleteRecipeForm">';
-                    buildAddedRecipes += '<input type="hidden" class="deleteRecipeItem" value="' + resultValue._id + '" >';
-                    buildAddedRecipes += '<button type="submit" class="deleteItemButton" value="">';
-                    buildAddedRecipes += '<i class="fa fa-minus-square-o" aria-hidden="true"></i>';
-                    buildAddedRecipes += '</button>';
                     buildAddedRecipes += '</div>';
-                    //                    if (resultValue.shared === true) {
-                    //                        isShared = "Yes";
-                    //                    } else {
-                    //                        isShared = "No";
-                    //                    }
                 });
 
                 //use the HTML output to show it in the index.html
-                $("#js-display-recipes").html(buildAddedRecipes);
+                $("#js-display-public-recipes").html(buildAddedRecipes);
             }
 
         })
@@ -83,10 +139,27 @@ $(document).on('submit', '.deleteTransactionForm', function (event) {
 
 // Triggers
 
+
 //when the page loads...
 $(document).ready(function () {
+    displayPublicRecipes();
     $("main").hide();
     $("#js-landing-page").show();
+});
+
+//when user enters keyword to search for recipes
+$(document).keyup('#js-search', function (event) {
+    event.preventDefault();
+    let searchTerm = $("#js-search").val();
+    console.log(searchTerm);
+    if (searchTerm.length != 0) {
+        $("#js-display-recipes .saved-recipes").hide();
+        $("." + searchTerm).show();
+    } else {
+        $("#js-display-recipes .saved-recipes").show();
+    }
+
+
 });
 //when user signs in
 $('#js-sign-in-form').on('submit', function (event) {

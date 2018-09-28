@@ -50,33 +50,7 @@
 
         <!--        placeholder for replacing public recipes-->
         <h2 class="displayRecipes"> Recipes Shared by SavourSaved users</h2>
-        <div class="saved-recipes">
-            <h3>Recipe Name:</h3>
-            <p>Dummy recipe #1</p>
-            <h3>Ingredients:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <h3>Instructions:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <h3>Tags:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-            <h3>Notes:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-        </div>
-        <div class="saved-recipes">
-            <h3>Recipe Name:</h3>
-            <p>Dummy recipe #2</p>
-            <h3>Ingredients:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <h3>Instructions:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <h3>Tags:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-            <h3>Notes:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        <div id="js-display-public-recipes">
         </div>
     </main>
 
@@ -118,7 +92,7 @@
         <form class='js-searchForm'>
             <section class="inputGroup">
                 <label class="search-text" for="search">Enter keyword to search for a recipe:
-                        <input type="text" placeholder="veggie" name="search" id="search">
+                        <input type="text" placeholder="veggie" name="search" id="js-search">
                         <span id="errorFood"></span>
                     </label>
                 <br>

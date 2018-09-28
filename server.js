@@ -225,6 +225,23 @@ app.get('/recipe/get/:username', function (req, res) {
         });
 });
 
+//GET recipe by username
+app.get('/recipe/get-public/', function (req, res) {
+    console.log(req.params.username);
+    Recipe.find({
+            shared: "Yes, share"
+        },
+        function (err, item) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Internal Server Error'
+                });
+            } else {
+                res.status(200).json(item);
+            }
+        });
+});
+
 // DELETE ----------------------------------------
 // deleting a recipe by id
 app.delete('/delete-from-recipe-list/:id', function (req, res) {
