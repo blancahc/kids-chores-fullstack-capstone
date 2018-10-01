@@ -91,12 +91,12 @@
         <!-- Search for Recipe  -->
         <form class='js-searchForm'>
             <section class="inputGroup">
-                <label class="search-text" for="search">Enter keyword to search for a recipe:
+                <label class="search-text" for="search">Search by recipe name or tag:
                         <input type="text" placeholder="veggie" name="search" id="js-search">
                         <span id="errorFood"></span>
                     </label>
                 <br>
-                <button class="submit-button" type="submit">Search!</button>
+                <!--                <button class="submit-button" type="submit">Search!</button>-->
             </section>
         </form>
         <h2 class="displayRecipes">My Recipes</h2>
@@ -112,7 +112,7 @@
                         <label for="rname">Recipe Name</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" name="recipename" id="js-recipeName" value="Veggie Pizza" placeholder="Name of your recipe..">
+                        <input type="text" name="recipename" id="js-recipeName" placeholder="Name of your recipe.." value="Veggie Pizza">
                     </div>
                 </div>
                 <div class="row">
@@ -154,12 +154,12 @@
                         <div class="col-75">
                             <div class="radio-btns">
                                 <div class="ui radio checkbox">
-                                    <label for="negative">Yes, Share Publicly </label>
-                                    <input type="radio" name='shared-radio' class="negative" value="Yes, share" checked="checked">
+                                    <label for="yes">Yes</label>
+                                    <input type="radio" name='shared-radio' value="Yes" checked="checked">
                                 </div>
                                 <div class="ui radio checkbox">
-                                    <label for="positive">No, Keep Private </label>
-                                    <input type="radio" name='shared-radio' class="positive" value="No, keep private">
+                                    <label for="no">No</label>
+                                    <input type="radio" name='shared-radio' value="No">
                                 </div>
                             </div>
                         </div>

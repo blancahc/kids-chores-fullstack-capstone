@@ -154,13 +154,13 @@ $(document).keyup('#js-search', function (event) {
     console.log(searchTerm);
     if (searchTerm.length != 0) {
         $("#js-display-recipes .saved-recipes").hide();
-        $("." + searchTerm).show();
+        //display classes starting wtih the searchTerm or containing the searchTerm inside
+        $("div[class^='" + searchTerm + "'],div[class*=' " + searchTerm + "']").show();
     } else {
         $("#js-display-recipes .saved-recipes").show();
     }
-
-
 });
+
 //when user signs in
 $('#js-sign-in-form').on('submit', function (event) {
     event.preventDefault();

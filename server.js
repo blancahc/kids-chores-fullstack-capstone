@@ -229,7 +229,7 @@ app.get('/recipe/get/:username', function (req, res) {
 app.get('/recipe/get-public/', function (req, res) {
     console.log(req.params.username);
     Recipe.find({
-            shared: "Yes, share"
+            shared: "Yes"
         },
         function (err, item) {
             if (err) {
