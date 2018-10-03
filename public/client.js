@@ -48,10 +48,16 @@ function displayAddedRecipes() {
                     buildAddedRecipes += '<p>' + resultValue.notes + '</p>';
                     buildAddedRecipes += '<h3>Share Publicly?</h3>';
                     buildAddedRecipes += '<p>' + resultValue.shared + '</p>';
+                    buildAddedRecipes += '<form class="editRecipeForm">';
+                    buildAddedRecipes += '<input type="hidden" class="editRecipeItem" value="' + resultValue._id + '" >';
+                    buildAddedRecipes += '<button type="submit" class="editItemButton" value="">';
+                    buildAddedRecipes += '<i class="fas fa-pen-square" aria-hidden="true"></i>';
+                    buildAddedRecipes += '</button>';
+                    buildAddedRecipes += '</form>';
                     buildAddedRecipes += '<form class="deleteRecipeForm">';
                     buildAddedRecipes += '<input type="hidden" class="deleteRecipeItem" value="' + resultValue._id + '" >';
                     buildAddedRecipes += '<button type="submit" class="deleteItemButton" value="">';
-                    buildAddedRecipes += '<i class="fa fa-minus-square-o" aria-hidden="true"></i>';
+                    buildAddedRecipes += '<i class="fas fa-minus-square" aria-hidden="true"></i>';
                     buildAddedRecipes += '</button>';
                     buildAddedRecipes += '</form>';
                     buildAddedRecipes += '</div>';
@@ -59,6 +65,113 @@ function displayAddedRecipes() {
 
                 //use the HTML output to show it in the index.html
                 $("#js-display-recipes").html(buildAddedRecipes);
+            }
+
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+};
+
+//display edited recipes
+function displayEditedRecipes(recipeIdToEdit) {
+    const username = $('#loggedInUserName').val();
+    console.log(username);
+    $.ajax({
+            type: 'GET',
+            url: '/recipe/get-by-id/' + recipeIdToEdit,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            if ((!result) || (result != undefined) || (result != "")) {
+
+                $("#js-edit-recipe").html('');
+                let buildEditedRecipes = "";
+
+                $.each(result, function (resultKey, resultValue) {
+                    buildEditedRecipes += '<div class="container">';
+                    buildEditedRecipes += '<form id="js-edit-form">';
+                    buildEditedRecipes += '<input type="hidden" class="editRecipeItem" value="' + resultValue._id + '" >';
+                    buildEditedRecipes += '<div class="row">';
+                    buildEditedRecipes += '<div class="col-25">';
+                    buildEditedRecipes += '<label for="rname">Recipe Name</label>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '<div class="col-75">';
+                    buildEditedRecipes += '<input type="text" name="recipename" id="js-edit-recipeName" placeholder="Name of your recipe.." value="' + resultValue.recipeName + '">';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '<div class="row">';
+                    buildEditedRecipes += '<div class="col-25">';
+                    buildEditedRecipes += '<label for="ingredients">Ingredients</label>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '<div class="col-75">';
+                    buildEditedRecipes += '<textarea name="ingredients" id="js-edit-ingredients" placeholder="List ingredients and their measurements..">' + resultValue.ingredients + '</textarea>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '<div class="row">';
+                    buildEditedRecipes += '<div class="col-25">';
+                    buildEditedRecipes += '<label for="instructions">Instructions</label>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '<div class="col-75">';
+                    buildEditedRecipes += '<textarea name="instructions" id="js-edit-instructions" placeholder="Write instructions on how to prepare this recipe..">' + resultValue.instructions + '</textarea>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '<div class="row">';
+                    buildEditedRecipes += '<div class="col-25">';
+                    buildEditedRecipes += '<label for="tags">Tags:</label>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '<div class="col-75">';
+                    buildEditedRecipes += '<input type="tags" id="js-edit-tags" placeholder="Add tags to help you search for this recipe in the future." value="' + resultValue.tags + '" id="tags" />';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '<div class="row">';
+                    buildEditedRecipes += '<div class="row">';
+                    buildEditedRecipes += '<div class="col-25">';
+                    buildEditedRecipes += '<label for="notes">Notes (optional)</label>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '<div class="col-75">';
+                    buildEditedRecipes += '<textarea name="notes" id="js-edit-notes" placeholder="Write any helpful notes. For example, how many people will it serve...">' + resultValue.notes + '</textarea>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '<div class="row">';
+                    buildEditedRecipes += '<div class="col-25"><label>Share Publicly?</label>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '<div class="col-75">';
+                    buildEditedRecipes += '<div class="radio-btns">';
+                    buildEditedRecipes += '<div class="ui radio checkbox">';
+                    buildEditedRecipes += '<label for="yes">Yes</label>';
+                    if (resultValue.shared == "Yes") {
+                        buildEditedRecipes += '<input type="radio" name="edit-shared-radio" value="Yes" checked="checked">';
+                    } else {
+                        buildEditedRecipes += '<input type="radio" name="edit-shared-radio" value="Yes">';
+                    }
+
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '<div class="ui radio checkbox">';
+                    buildEditedRecipes += '<label for="no">No</label>';
+                    if (resultValue.shared == "Yes") {
+                        buildEditedRecipes += '<input type="radio" name="edit-shared-radio" value="No">';
+                    } else {
+                        buildEditedRecipes += '<input type="radio" name="edit-shared-radio" value="No" checked="checked">';
+                    }
+
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '<div class="row">';
+                    buildEditedRecipes += '<input class="submit-button" type="submit" value="Submit">';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '</div>';
+                    buildEditedRecipes += '</form>';
+                    buildEditedRecipes += '</div>';
+                });
+
+                //use the HTML output to show it in the index.html
+                $("#js-edit-recipe").html(buildEditedRecipes);
             }
 
         })
@@ -110,6 +223,34 @@ function displayPublicRecipes() {
             console.log(errorThrown);
         });
 };
+
+//Edit a recipe
+$(document).on('submit', '.editRecipeForm', function (event) {
+    event.preventDefault();
+    let recipeIdToEdit = $(this).parent().find('.editRecipeItem').val();
+    let recipeObject = {
+        'id': recipeIdToEdit
+    };
+    $.ajax({
+            method: 'PUT',
+            dataType: 'json',
+            contentType: 'application/json',
+            url: '/edit-from-recipe-list/' + recipeIdToEdit,
+        })
+        .done(function (result) {
+            displayEditedRecipes(recipeIdToEdit);
+            $('main').hide();
+            $('#js-edit-recipe').show();
+            //            alert('Edited!', 'Maybe next time...', 'success');
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+            alert('Oops...', 'Please try again', 'error');
+        });
+});
+
 //Delete a recipe
 $(document).on('submit', '.deleteTransactionForm', function (event) {
     event.preventDefault();
@@ -356,32 +497,6 @@ $('#js-nav-my-recipes').on('click', function (event) {
     $('main').hide();
     $('#js-my-recipes-page').show();
     $('#js-navigation').show();
-});
-
-////User will be able to remove item from transactions history
-$(document).on('submit', '.deleteTransactionForm', function (event) {
-    event.preventDefault();
-    let transactionIdToDelete = $(this).parent().find('.deleteTransactionItem').val();
-    let transactionObject = {
-        'id': transactionIdToDelete
-    };
-    $.ajax({
-            method: 'DELETE',
-            dataType: 'json',
-            contentType: 'application/json',
-            url: '/delete-from-transaction-list/' + transactionIdToDelete,
-        })
-        .done(function (result) {
-            displaySubcategorySummary();
-            displayTransactionHistory();
-            alert('Removed!', 'Maybe next time...', 'success');
-        })
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-            alert('Oops...', 'Please try again', 'error');
-        });
 });
 
 ////User will be able to remove item from recipe history

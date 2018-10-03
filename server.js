@@ -224,6 +224,22 @@ app.get('/recipe/get/:username', function (req, res) {
             }
         });
 });
+//GET recipe by id
+app.get('/recipe/get-by-id/:id', function (req, res) {
+    Recipe.find({
+            _id: req.params.id
+        },
+        function (err, item) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Internal Server Error'
+                });
+            } else {
+                res.status(200).json(item);
+            }
+        });
+});
+
 
 //GET recipe by username
 app.get('/recipe/get-public/', function (req, res) {
@@ -242,6 +258,47 @@ app.get('/recipe/get-public/', function (req, res) {
         });
 });
 
+// PUT ----------------------------------------
+//// editing a recipe by id
+//app.put('/edit-from-recipe-list/:id', function (req, res) {
+//    let recipeName = req.body.name;
+//    let recipeID = req.body.id;
+//
+//    Category.findByIdAndUpdate(recipeID, {
+//        name: recipeName
+//    }, (err, item) => {
+//        if (err) {
+//            return res.status(500).json({
+//                message: 'Internal Server Error'
+//            });
+//        } else if (item) {
+//            console.log(`Updated Recipe \`${item}\`.`);
+//            return res.json(item);
+//        }
+//
+//    });
+//});
+
+app.put('/edit-from-recipe-list/:id', function (req, res) {
+    let toUpdate = {};
+    let updateableFields = ['recipeName', 'ingredients', 'instructions', 'tags', 'notes', 'shared', 'username'];
+    updateableFields.forEach(function (field) {
+        if (field in req.body) {
+            toUpdate[field] = req.body[field];
+        }
+    });
+    //    console.log(toUpdate);
+    Recipe
+        .findByIdAndUpdate(req.params.id, {
+            $set: toUpdate
+        }).exec().then(function (newRecipe) {
+            return res.status(204).end();
+        }).catch(function (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        });
+});
 // DELETE ----------------------------------------
 // deleting a recipe by id
 app.delete('/delete-from-recipe-list/:id', function (req, res) {
@@ -253,115 +310,8 @@ app.delete('/delete-from-recipe-list/:id', function (req, res) {
         });
     });
 });
-// -------------category ENDPOINTS------------------------------------------------
-// POST -----------------------------------------
-// creating a new Category
-app.post('/category/create', (req, res) => {
-    let categoryName = req.body.categoryName;
-    let username = req.body.username;
 
-    Category.create({
-        categoryName,
-        username
-    }, (err, item) => {
-        if (err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
-            });
-        }
-        if (item) {
-            return res.json(item);
-        }
-    });
-});
-//GET category by username
-app.get('/category/get/:username', function (req, res) {
-    console.log(req.params.username);
-    Category.find({
-            username: req.params.username
-        },
-        function (err, item) {
-            if (err) {
-                return res.status(500).json({
-                    message: 'Internal Server Error'
-                });
-            } else {
-                res.status(200).json(item);
-            }
-        });
-});
-// ------------subcategory ENDPOINTS------------------------------------------------
-// POST -----------------------------------------
-// creating a new subcategory
-app.post('/subcategory/create', (req, res) => {
-    let subcategoryName = req.body.subcategoryName;
-    let categoryBelongstoName = req.body.categoryBelongstoName;
-    let budgetSubcategoryAmount = req.body.budgetSubcategoryAmount;
-    let incomeExpense = req.body.incomeExpense;
-    let username = req.body.username;
 
-    Subcategory.create({
-        subcategoryName,
-        categoryBelongstoName,
-        budgetSubcategoryAmount,
-        incomeExpense,
-        username
-    }, (err, item) => {
-        if (err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
-            });
-        }
-        if (item) {
-            return res.json(item);
-        }
-    });
-});
-//GET subcategory by username
-app.get('/subcategory/get/:username', function (req, res) {
-    console.log(req.params.username);
-    Subcategory.find({
-            username: req.params.username
-        },
-        function (err, item) {
-            if (err) {
-                return res.status(500).json({
-                    message: 'Internal Server Error'
-                });
-            } else {
-                res.status(200).json(item);
-            }
-
-            function jsUcfirst(string) {
-                return string.charAt(0).toUpperCase() + string.slice(1);
-            }
-        }).sort("subcategoryName");
-
-});
-
-// -------------transaction ENDPOINTS------------------------------------------------
-// POST -----------------------------------------
-
-// DELETE ----------------------------------------
-// deleting a transaction by id
-app.delete('/delete-from-transaction-list/:id', function (req, res) {
-    Transaction.findByIdAndRemove(req.params.id).exec().then(function (entry) {
-        return res.status(204).end();
-    }).catch(function (err) {
-        return res.status(500).json({
-            message: 'Internal Server Error'
-        });
-    });
-}); // deleting an budgetsubcategory by id
-app.delete('/delete-from-subcategory-list/:id', function (req, res) {
-    Subcategory.findByIdAndRemove(req.params.id).exec().then(function (entry) {
-        return res.status(204).end();
-    }).catch(function (err) {
-        return res.status(500).json({
-            message: 'Internal Server Error'
-        });
-    });
-});
 
 // MISC ------------------------------------------
 // catch-all endpoint if client makes request to non-existent endpoint
