@@ -481,6 +481,68 @@ $('#js-add-form').on('submit', function (event) {
 
 });
 
+//Submit Edit Recipe Form
+$(document).on('submit', '#js-edit-form', function (event) {
+    event.preventDefault();
+
+    //take the input from the user
+    const username = $("#loggedInUserName").val();
+    const recipeId = $(".editRecipeItem").val();
+    const recipeName = $("#js-edit-recipeName").val();
+    const ingredients = $("#js-edit-ingredients").val();
+    const instructions = $("#js-edit-instructions").val();
+    const tags = $("#js-edit-tags").val();
+    const notes = $("#js-edit-notes").val();
+    const shared = $("input[name='edit-shared-radio']:checked").val();
+    console.log("hey"); //validate the input
+    if (recipeName == "") {
+        alert('Please add a recipe name');
+    } else if (ingredients == "") {
+        alert('Please enter the ingredients');
+    } else if (instructions == "") {
+        alert('Please enter the instructions');
+    } else if (tags == "") {
+        alert('Please enter tags');
+    }
+    //if the input is valid
+    else {
+        //create the payload object (what data we send to the api call)
+        const editRecipeObject = {
+            recipeName: recipeName,
+            username: username,
+            ingredients: ingredients,
+            instructions: instructions,
+            tags: tags,
+            notes: notes,
+            shared: shared
+        };
+        console.log(editRecipeObject);
+
+        //make the api call using the payload above
+        $.ajax({
+                type: 'PUT',
+                url: '/edit-from-recipe-list/' + recipeId,
+                dataType: 'json',
+                data: JSON.stringify(editRecipeObject),
+                contentType: 'application/json'
+            })
+            //if call is sucessful
+            .done(function (result) {
+                console.log(result);
+                $("main").hide();
+                $("#js-navigation").show();
+                $("#js-added-recipe").show();
+            })
+            //if the call is failing
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
+    };
+
+});
+
 
 //Click on Add Recipe nav menu uption
 $('#js-nav-add-recipe').on('click', function (event) {
