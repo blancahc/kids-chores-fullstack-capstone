@@ -227,8 +227,8 @@ function displayPublicRecipes() {
 //Edit a recipe
 $(document).on('submit', '.editRecipeForm', function (event) {
     event.preventDefault();
-    let recipeIdToEdit = $(this).parent().find('.editRecipeItem').val();
-    let recipeObject = {
+    const recipeIdToEdit = $(this).parent().find('.editRecipeItem').val();
+    const recipeObject = {
         'id': recipeIdToEdit
     };
     $.ajax({
@@ -265,8 +265,8 @@ $(document).on('submit', '.deleteTransactionForm', function (event) {
             url: '/delete-from-transaction-list/' + transactionIdToDelete,
         })
         .done(function (result) {
-            displaySubcategorySummary();
-            displayTransactionHistory();
+            //            displaySubcategorySummary();
+            //            displayTransactionHistory();
             alert('Removed!', 'Maybe next time...', 'success');
         })
         .fail(function (jqXHR, error, errorThrown) {
@@ -528,10 +528,10 @@ $(document).on('submit', '#js-edit-form', function (event) {
             })
             //if call is sucessful
             .done(function (result) {
-                console.log(result);
+                //            console.log(result);
                 $("main").hide();
                 $("#js-navigation").show();
-                $("#js-added-recipe").show();
+                $("#js-edited-recipe").show();
             })
             //if the call is failing
             .fail(function (jqXHR, error, errorThrown) {
@@ -542,7 +542,6 @@ $(document).on('submit', '#js-edit-form', function (event) {
     };
 
 });
-
 
 //Click on Add Recipe nav menu uption
 $('#js-nav-add-recipe').on('click', function (event) {
