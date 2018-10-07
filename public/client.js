@@ -19,6 +19,15 @@ function sanitizedClasses(rawString) {
     return rawStringWihtoutPunctuation;
 }
 
+//clear recipe fields
+function clearFields() {
+    $("#js-recipeName").val("");
+    $("#js-ingredients").val("");
+    $("#js-instructions").val("");
+    $("#js-tags").val("");
+    $("#js-notes").val("");
+};
+
 function displayAddedRecipes() {
     const username = $('#loggedInUserName').val();
     console.log(username);
@@ -228,9 +237,8 @@ function displayPublicRecipes() {
 $(document).on('submit', '.editRecipeForm', function (event) {
     event.preventDefault();
     const recipeIdToEdit = $(this).parent().find('.editRecipeItem').val();
-    const recipeObject = {
-        'id': recipeIdToEdit
-    };
+
+
     $.ajax({
             method: 'PUT',
             dataType: 'json',
@@ -238,6 +246,7 @@ $(document).on('submit', '.editRecipeForm', function (event) {
             url: '/edit-from-recipe-list/' + recipeIdToEdit,
         })
         .done(function (result) {
+            console.log(recipeIdToEdit);
             displayEditedRecipes(recipeIdToEdit);
             $('main').hide();
             $('#js-edit-recipe').show();
@@ -279,7 +288,6 @@ $(document).on('submit', '.deleteTransactionForm', function (event) {
 
 
 // Triggers
-
 
 //when the page loads...
 $(document).ready(function () {
@@ -481,13 +489,14 @@ $('#js-add-form').on('submit', function (event) {
 
 });
 
+
 //Submit Edit Recipe Form
 $(document).on('submit', '#js-edit-form', function (event) {
     event.preventDefault();
 
     //take the input from the user
     const username = $("#loggedInUserName").val();
-    const recipeId = $(".editRecipeItem").val();
+    const recipeId = $(this).parent().find(".editRecipeItem").val();
     const recipeName = $("#js-edit-recipeName").val();
     const ingredients = $("#js-edit-ingredients").val();
     const instructions = $("#js-edit-instructions").val();
@@ -516,7 +525,7 @@ $(document).on('submit', '#js-edit-form', function (event) {
             notes: notes,
             shared: shared
         };
-        console.log(editRecipeObject);
+        console.log(editRecipeObject, recipeId);
 
         //make the api call using the payload above
         $.ajax({
@@ -546,6 +555,7 @@ $(document).on('submit', '#js-edit-form', function (event) {
 //Click on Add Recipe nav menu uption
 $('#js-nav-add-recipe').on('click', function (event) {
     event.preventDefault();
+    clearFields();
     $('main').hide();
     $('#js-add-recipe').show();
     $('#js-navigation').show();

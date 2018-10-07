@@ -280,6 +280,7 @@ app.get('/recipe/get-public/', function (req, res) {
 //});
 
 app.put('/edit-from-recipe-list/:id', function (req, res) {
+    console.log(req.params.id);
     let toUpdate = {};
     let updateableFields = ['recipeName', 'ingredients', 'instructions', 'tags', 'notes', 'shared', 'username'];
     updateableFields.forEach(function (field) {
