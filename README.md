@@ -1,5 +1,5 @@
 # recipe-book-fullstack-capstone
-Live Pre-view available at ?....................?
+Node live pre-view available at https://recipe-book-capstone.herokuapp.com/
 
 # Goal & Use Case
 
