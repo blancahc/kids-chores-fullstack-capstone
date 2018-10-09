@@ -25,7 +25,7 @@ This is a simple app where someone can search for, create his/her own recipes an
 ![Add Recipe](https://github.com/blancahc/recipe-book-fullstack-capstone/blob/master/git-hub-images/add-recipe.PNG)
 
 4. As a user, I want to get a detailed view of my saved receipes and search through them by title or tag.
-![Detailed Recipe View](https://github.com/blancahc/recipe-book-fullstack-capstone/blob/master/git-hub-images/Detailed-view.PNG)
+![Detailed Recipe View](https://github.com/blancahc/recipe-book-fullstack-capstone/blob/master/git-hub-images/my-recipes-page.jpg)
 
 # Technical stack
 
