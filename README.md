@@ -34,6 +34,7 @@ This is a simple app where someone can search for, create his/her own recipes an
  * CSS3
  * JavaScript
  * jQuery
+ * React
 
 **Back-end**
  * NodeJS
@@ -53,7 +54,8 @@ This is a simple app where someone can search for, create his/her own recipes an
  * Bcrypt
 
 ### Version 1.1
- *
+ * Ability for users to share recipes with others through email
+ * Ability to search for recipes using external API for users to save recipes directly
 
 #  The typical command lines for capstone projects
 
