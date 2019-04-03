@@ -1,7 +1,7 @@
 {
     "name": "recipe-book-fullstack-capstone",
     "version": "1.0.0",
-    "description": "Live Pre-view available at ?....................?",
+    "description": "Live Pre-view available at https://budgeting-app-node-capstone.herokuapp.com/",
     "main": "server.js",
     "repository": {
         "type": "git",
