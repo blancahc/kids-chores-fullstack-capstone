@@ -1,7 +1,7 @@
 {
     "name": "recipe-book-fullstack-capstone",
     "version": "1.0.0",
-    "description": "Live Pre-view available at https://budgeting-app-node-capstone.herokuapp.com/",
+    "description": "Live Pre-view available at https://blancahc.github.io/recipe-book-fullstack-capstone-react/build",
     "main": "server.js",
     "repository": {
         "type": "git",
